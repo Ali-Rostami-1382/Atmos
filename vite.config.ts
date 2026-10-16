@@ -1,11 +1,11 @@
 import { defineConfig } from "vitest/config";
 import react from "@vitejs/plugin-react";
 
-export default defineConfig(({ mode }) => ({
+export default defineConfig({
   plugins: [react()],
-  base: mode === "production" ? "/Atmos/" : "/",
+  base: "./",
   test: {
     environment: "jsdom",
     setupFiles: "./src/test-setup.ts",
   },
-}));
+});
