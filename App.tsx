@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { ArrowUpRight, Check, ChevronDown, CloudSun, Compass, Droplets, LocateFixed, MapPin, Moon, Search, Sun, Sunrise, Sunset, Thermometer, Wind, X, Star } from "lucide-react";
+import { ArrowUpRight, Check, ChevronDown, CloudSun, Compass, Droplets, LocateFixed, MapPin, Moon, Search, Sun, Sunrise, Sunset, Thermometer, Wind, X, CloudRain, CalendarDays, Star } from "lucide-react";
 import WeatherGlyph from "./components/WeatherGlyph";
 import { formatHour, formatTemperature, formatWeekday, getForecast, getUvLabel, getWeatherCondition, searchCities } from "./lib/weather";
 import type { City, ForecastResponse, SavedCity, TemperatureUnit } from "./types/weather";
