@@ -66,7 +66,7 @@ body {
 .blue-nav-kicker { padding:22px 6px 10px; color:var(--subtle); font:10px "DM Mono",monospace; letter-spacing:1.4px; }
 .blue-nav { display:grid; gap:6px; }
 .blue-nav button { display:grid; grid-template-columns:25px minmax(0,1fr) auto; align-items:center; gap:7px; min-height:43px; padding:7px 6px; background:transparent; border:1px solid transparent; color:var(--muted); text-align:left; font-size:11px; cursor:pointer; transition:background .16s,border-color .16s; }
-.blue-nav button svg { color: #065535; }
+.blue-nav button svg { color: #660066; }
 .blue-nav button i { font:normal 9px "DM Mono",monospace; color:var(--subtle); }
 .blue-nav button:hover,.blue-nav button.active { background:var(--panel-hover); border-color:var(--line); color:var(--text); }
 .blue-nav button.active { box-shadow:inset 3px 0 var(--accent); }
