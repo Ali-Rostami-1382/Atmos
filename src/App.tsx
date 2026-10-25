@@ -75,8 +75,6 @@ export default function App() {
   const days = useMemo(() => forecast ? forecast.daily.time.map((date, index) => ({ date, code: forecast.daily.weather_code[index], high: forecast.daily.temperature_2m_max[index], low: forecast.daily.temperature_2m_min[index], rain: forecast.daily.precipitation_probability_max[index] })) : [], [forecast]);
   const visibleDays = days;
   const minTemp = days.length ? Math.min(...days.map((day) => day.low)) : 0;
-  const maxTemp = hourly.length ? Math.max(...hourly.map((item) => item.temperature)) + 2 : 10;
-  const minHourTemp = hourly.length ? Math.min(...hourly.map((item) => item.temperature)) - 2 : 0;
   const savedCurrent = savedCities.some((item) => item.id === city.id);
 
   function chooseCity(next: City) { setCity(next); setQuery(""); setSuggestions([]); setSearchError(""); searchRef.current?.blur(); }
@@ -150,7 +148,7 @@ export default function App() {
     </section>
 
     <section id="hourly" className="forecast-section panel page-section"><div className="section-heading"><div><span className="section-kicker">THE NEXT FEW HOURS</span><h2>Look ahead</h2></div><span className="section-aside">Hourly forecast <ChevronDown size={14} /></span></div>
-      {forecast ? <div className="hourly-strip">{hourly.map((item, index) => { const weather = getWeatherCondition(item.code); const position = 18 + ((item.temperature - minHourTemp) / Math.max(1, maxTemp - minHourTemp)) * 64; return <div className={`hour-item ${index === 0 ? "is-now" : ""}`} key={item.time}><span className="hour-label">{index === 0 ? "Now" : formatHour(item.time, timezone)}</span><div className="hour-icon-wrap"><WeatherGlyph icon={weather.icon} size={23} /></div><strong className="hour-temp">{formatTemperature(item.temperature, unit)}°</strong><div className="hour-chart" aria-hidden="true"><span className="hour-chart-line" style={{ top: `${100 - position}%` }} /><span className="hour-chart-point" style={{ top: `${100 - position}%` }} /></div><span className="hour-rain"><Droplets size={11} />{item.rain}%</span></div>; })}</div> : <div className="detail-placeholder">Hourly forecast will appear here.</div>}
+      {forecast ? <div className="hourly-strip">{hourly.map((item, index) => { const weather = getWeatherCondition(item.code); return <div className={`hour-item ${index === 0 ? "is-now" : ""}`} key={item.time}><span className="hour-label">{index === 0 ? "Now" : formatHour(item.time, timezone)}</span><div className="hour-icon-wrap"><WeatherGlyph icon={weather.icon} size={23} /></div><strong className="hour-temp">{formatTemperature(item.temperature, unit)}°</strong><span className="hour-rain"><Droplets size={11} />{item.rain}%</span></div>; })}</div> : <div className="detail-placeholder">Hourly forecast will appear here.</div>}
     </section>
 
     <section className="bottom-grid page-section"><article id="weekly" className="weekly-card panel page-section"><div className="section-heading"><div><span className="section-kicker">PLAN AHEAD</span><h2>7-day forecast</h2></div><span className="section-aside">All 7 days</span></div>
